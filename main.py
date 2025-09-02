@@ -544,42 +544,42 @@ async def gaurav_command(bot: Client, m: Message):
 
             # --- Injected API priority handling ---
             if "media-cdn.classplusapp.com/drm/" in url or "/master.mpd" in url or "d1d34p8vz63oiq" in url or "sec1.pw.live" in url:
-                try:
-                    
-                        url = final_url
-                        await bot.send_photo(chat_id=m.chat.id, photo=hacker_img, caption=f"💻 DRM Extracted\n🔗 `{url}`")
-                    else:
-                        await m.reply_text("❌ DRM extraction failed from all APIs.")
-                        continue
-                except Exception as e:
-                    await m.reply_text(f"⚠️ API Error: {str(e)}")
-                    continue
+    try:
+        url = final_url
+        await bot.send_photo(chat_id=m.chat.id, photo=hacker_img, caption=f"💻 DRM Extracted\n🔗 `{url}`")
+    except Exception as e:
+        await m.reply_text(f"⚠️ API Error: {str(e)}")
+        continue
+    else:
+        await m.reply_text("❌ DRM extraction failed from all APIs.")
+        continue
 
-                elif "apps-s3-jw-prod.utkarshapp.com" in url:
-                    if 'enc_plain_mp4' in url:
-                        url = url.replace(url.split("/")[-1], res+'.mp4')
+elif "apps-s3-jw-prod.utkarshapp.com" in url:
+    if 'enc_plain_mp4' in url:
+        url = url.replace(url.split("/")[-1], res+'.mp4')
 
-                # 1st API
-                api_url = f"https://drm-api-one.vercel.app/api?url={url}&token={raw_text4}"
-                resp = requests.get(api_url, timeout=15)
-                if resp.status_code != 200 or not resp.text.strip():
-                    # 2nd API
-                    api_url = f"https://drm-api-one.vercel.app/api?url={url}&token={raw_text4}"
-                    resp = requests.get(api_url, timeout=15)
-                if resp.status_code != 200 or not resp.text.strip():
-                    # 3rd API
-                    api_url = f"https://drm-api-one.vercel.app/api?url={url}&token={raw_text4}"
-                    resp = requests.get(api_url, timeout=15)
+    # 1st API
+    api_url = f"https://drm-api-one.vercel.app/api?url={url}&token={raw_text4}"
+    resp = requests.get(api_url, timeout=15)
+    if resp.status_code != 200 or not resp.text.strip():
+        # 2nd API
+        api_url = f"https://drm-api-one.vercel.app/api?url={url}&token={raw_text4}"
+        resp = requests.get(api_url, timeout=15)
+    if resp.status_code != 200 or not resp.text.strip():
+        # 3rd API
+        api_url = f"https://drm-api-one.vercel.app/api?url={url}&token={raw_text4}"
+        resp = requests.get(api_url, timeout=15)
 
-                elif 'Key-Pair-Id' in url:
-                    url = None
-                elif '.m3u8' in url:
-                    q = ((m3u8.loads(requests.get(url).text)).data['playlists'][1]['uri']).split("/")[0]
-                    x = url.split("/")[5]
-                    x = url.replace(x, "")
-                    url = ((m3u8.loads(requests.get(url).text)).data['playlists'][1]['uri']).replace(q+"/", x)
+elif 'Key-Pair-Id' in url:
+    url = None
 
-            elif 'drmcdni' in url or 'drm/wv' in url:
+elif '.m3u8' in url:
+    q = ((m3u8.loads(requests.get(url).text)).data['playlists'][1]['uri']).split("/")[0]
+    x = url.split("/")[5]
+    x = url.replace(x, "")
+    url = ((m3u8.loads(requests.get(url).text)).data['playlists'][1]['uri']).replace(q+"/", x)
+
+elif 'drmcdni' in url or 'drm/wv' in url:
                 Show = f"<i><b>⚡Fast Video Downloading</b></i>\n<blockquote><b>{str(count).zfill(3)}) {links[i][0]}</b></blockquote>"
                 prog = await bot.send_message(m.chat.id, Show, disable_web_page_preview=True)
 
