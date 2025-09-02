@@ -554,20 +554,24 @@ async def gaurav_command(bot: Client, m: Message):
                 except Exception as e:
                     await m.reply_text(f"⚠️ API Error: {str(e)}")
                     continue
-                 elif "apps-s3-jw-prod.utkarshapp.com" in url:
-                if 'enc_plain_mp4' in url:
-                    url = url.replace(url.split("/")[-1], res+'.mp4')
-               # 1st API
-api_url = f"https://drm-api-one.vercel.app/api?url={url}&token={raw_text4}"
-resp = requests.get(api_url, timeout=15)
-if resp.status_code != 200 or not resp.text.strip():
-    # 2nd API
-    api_url = f"https://drm-api-one.vercel.app/api?url={url}&token={raw_text4}"
-    resp = requests.get(api_url, timeout=15)
-if resp.status_code != 200 or not resp.text.strip():
-    # 3rd API
-    api_url = f"https://drm-api-one.vercel.app/api?url={url}&token={raw_text4}"
-    resp = requests.get(api_url, timeout=15) elif 'Key-Pair-Id' in url:
+
+                elif "apps-s3-jw-prod.utkarshapp.com" in url:
+                    if 'enc_plain_mp4' in url:
+                        url = url.replace(url.split("/")[-1], res+'.mp4')
+
+                # 1st API
+                api_url = f"https://drm-api-one.vercel.app/api?url={url}&token={raw_text4}"
+                resp = requests.get(api_url, timeout=15)
+                if resp.status_code != 200 or not resp.text.strip():
+                    # 2nd API
+                    api_url = f"https://drm-api-one.vercel.app/api?url={url}&token={raw_text4}"
+                    resp = requests.get(api_url, timeout=15)
+                if resp.status_code != 200 or not resp.text.strip():
+                    # 3rd API
+                    api_url = f"https://drm-api-one.vercel.app/api?url={url}&token={raw_text4}"
+                    resp = requests.get(api_url, timeout=15)
+
+                elif 'Key-Pair-Id' in url:
                     url = None
                 elif '.m3u8' in url:
                     q = ((m3u8.loads(requests.get(url).text)).data['playlists'][1]['uri']).split("/")[0]
