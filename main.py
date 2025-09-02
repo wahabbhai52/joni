@@ -479,7 +479,7 @@ async def help_command(client: Client, msg: Message):
     )
     await msg.reply_text(help_text)
  @bot.on_message(filters.command("gaurav"))
- async def gaurav_command(bot: Client, m: Message):
+async def gaurav_command(bot: Client, m: Message):
     if not is_authorized(m.from_user.id):
         await m.reply_text("🚫 You are not authorized to use this command.")
         return
