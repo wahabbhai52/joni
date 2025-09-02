@@ -1,4 +1,3 @@
-# ✅ Latest stable base image use करें
 FROM python:3.10-slim-bullseye
 
 # ✅ System update + dependencies install
