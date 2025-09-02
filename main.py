@@ -1,5 +1,5 @@
-# Don't Remove Credit Tg - @ytbr_67
-# Ask Doubt on telegram @ytbr_67
+# Don't Remove Credit Tg - @RIYA40X
+# Ask Doubt on telegram @RIYA40X
 
 import os
 import re
@@ -544,7 +544,7 @@ async def gaurav_command(bot: Client, m: Message):
             if "media-cdn.classplusapp.com/drm/" in url or "/master.mpd" in url or "d1d34p8vz63oiq" in url or "sec1.pw.live" in url:
                 try:
                     # 1st API
-                    api_url = f"https://teamjnc.vercel.app/api?url={url}&token={raw_text4}"
+                    api_url = f"api_url = f"https://drm-api-one.vercel.app/api?url={url}&token={raw_text4}"
                     resp = requests.get(api_url, timeout=15)
                     if resp.status_code != 200 or not resp.text.strip():
                         # 2nd API
