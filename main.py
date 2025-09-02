@@ -478,8 +478,9 @@ async def help_command(client: Client, msg: Message):
         "`/premiumlist` - List premium users (owner)📋\n\n"
     )
     await msg.reply_text(help_text)
-    
- @bot.on_message(filters.command("gaurav"))
+
+# gaurav command (fixed)
+@bot.on_message(filters.command("gaurav"))
 async def gaurav_command(bot: Client, m: Message):
     if not is_authorized(m.from_user.id):
         await m.reply_text("🚫 You are not authorized to use this command.")
